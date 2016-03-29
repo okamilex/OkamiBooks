@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using OkamiBooks.Models;
@@ -40,6 +41,16 @@ namespace OkamiBooks.Controllers
             }
         }
 
+        private ApplicationRoleManager roleManager;
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return this.roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+            }
+            private set { this.roleManager = value; }
+        }
+
         public ApplicationUserManager UserManager
         {
             get
@@ -51,6 +62,7 @@ namespace OkamiBooks.Controllers
                 _userManager = value;
             }
         }
+        
 
         //
         // GET: /Account/Login
@@ -152,6 +164,8 @@ namespace OkamiBooks.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                
+                
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

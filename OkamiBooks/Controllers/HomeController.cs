@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using OkamiBooks.Models;
 using OkamiBooks.Models.Entities;
 
@@ -15,11 +16,14 @@ namespace OkamiBooks.Controllers
         public JsonResult GetAllUsers()
         {
             List<User> users;
+
             using (var context = new DatabaseContext())
             {
+                
                 users = context.Users.ToList();
             }
             return Json(users, JsonRequestBehavior.AllowGet);
+            
         }
         public ActionResult Index()
         {
@@ -40,6 +44,7 @@ namespace OkamiBooks.Controllers
 
 
         [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult MyAcount()
         {
             ViewBag.Message = "Your contact page.";
