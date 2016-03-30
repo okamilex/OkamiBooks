@@ -13,5 +13,13 @@ namespace OkamiBooks.Controllers
         {
             return View();
         }
+        public ActionResult Read()
+        {
+            return View();
+        }
+        public ActionResult Work()
+        {
+            return View();
+        }
     }
 }

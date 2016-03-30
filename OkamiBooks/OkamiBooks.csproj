@@ -239,6 +239,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Scripts\app\app.js" />
+    <Content Include="Scripts\app\controllers\homeController.js" />
     <Content Include="Scripts\app\controllers\LoginController.js" />
     <Content Include="Scripts\app\controllers\MainController.js" />
     <Content Include="favicon.ico" />
@@ -273,6 +274,7 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app\controllers\peopleController.js" />
+    <Content Include="Scripts\app\controllers\userPageController.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -290,6 +292,7 @@
     <Content Include="Scripts\angular-cookies.min.js.map" />
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -1086,6 +1089,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Book\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Book\Read.cshtml" />
+    <Content Include="Views\Book\Work.cshtml" />
+    <Content Include="Views\User\UserPage.cshtml" />
+    <Content Include="Views\User\UsersList.cshtml" />
+    <Content Include="translation_ru.json" />
+    <Content Include="translation_en.json" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

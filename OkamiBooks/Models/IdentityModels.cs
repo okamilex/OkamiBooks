@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -12,11 +13,12 @@ namespace OkamiBooks.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
-        public ServiceRibbon MedalsList { get; set; }
-        public List<Book> Books { get; set; }
-        public List<Comment> Comments { get; set; }
-        public List<Like> Likes { get; set; }
-        public List<UserBookInfo> BooksInfo { get; set; }
+        
+        public virtual ServiceRibbon MedalsList { get; set; }
+        public virtual List<Book> Books { get; set; }
+        public virtual List<Comment> Comments { get; set; }
+        public virtual List<Like> Likes { get; set; }
+        public virtual List<UserBookInfo> BooksInfo { get; set; }
         public int TextSize { get; set; }
         public int TextWidth { get; set; }
         public int Theme { get; set; }
@@ -31,21 +33,11 @@ namespace OkamiBooks.Models
         }
     }
 
-    public class ApplicationRole : IdentityRole
-    {
-        
-    }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
-        {
-        }
 
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
-    }
+
+
+    
+
+ 
 }

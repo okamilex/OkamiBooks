@@ -3,15 +3,29 @@
     ViewBag.Title = "People";
 }
 
-<h2>People</h2>
+<div class="container">
+    <h2>{{translation.people}}</h2>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Login</th>
+                <th>Reiting</th>
+                <th>Books amount</th>
+            </tr>
+        </thead>
+        <tbody>
 
-<div class="row">
-    <div id="userList">
-        <div ng-repeat="user in people" class="col-lg-12">
-            <div> User with id: {{user.Id}}</div>
-            
-        </div>
-    </div>
+        <tr ng-repeat="user in people">
+            <td>
+                <a ng-href="/userPage/">{{user.Id}} {{user.Login}}</a>
+            </td>
+                <td>{{user.Reiting}}</td>
+                <td>{{user.BA}}</td>
+        </tr>
+        </tbody>
+    </table>
 </div>
+
 
 

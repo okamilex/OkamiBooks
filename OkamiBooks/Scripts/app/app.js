@@ -1,5 +1,7 @@
 ﻿
-mainApp = angular.module('mainApp', ['ngRoute', 'ngAnimate']);
+mainApp = angular.module('mainApp', ['ngRoute', 'ngAnimate', 'ngCookies', 'ngResource']);
+
+
 
 mainApp.config([
     '$routeProvider',
@@ -8,24 +10,24 @@ mainApp.config([
             
             when('/home', {
                 templateUrl: "home/home",
-                controller: 'peopleController'
+                controller: 'homeController'
             }).
-            when('/home/home', {
-                templateUrl: "home/home",
-                controller: 'peopleController'
-            }).
-             when('/home/people', {
-                 templateUrl: "home/people",
-                 controller: 'peopleController'
-             }).
+             
             when('/people', {
                 templateUrl: "home/people",
                 controller: 'peopleController'
+            }).
+            when('/userPage', {
+                templateUrl: "user/userpage",
+                controller: 'userPageController'
             }).
             
             otherwise({
                 redirectTo: '/home'
             });
-    }
+    },
+   
+    
 ]);
+
 

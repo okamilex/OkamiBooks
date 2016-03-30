@@ -12,19 +12,7 @@ namespace OkamiBooks.Controllers
 {
     public class HomeController : Controller
     {
-        [HttpGet]
-        public JsonResult GetAllUsers()
-        {
-            List<User> users;
-
-            using (var context = new DatabaseContext())
-            {
-                
-                users = context.Users.ToList();
-            }
-            return Json(users, JsonRequestBehavior.AllowGet);
-            
-        }
+        
         public ActionResult Index()
         {
             return View();
@@ -34,7 +22,7 @@ namespace OkamiBooks.Controllers
         {
             using (var context = new DatabaseContext())
             {
-                var user = context.Users.Include(u => u.UserRole).FirstOrDefault();
+                //context.Tags.Add(new Tags {Name = "first"});
                 context.SaveChanges();
             }
             return View();

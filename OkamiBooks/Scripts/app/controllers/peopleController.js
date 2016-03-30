@@ -1,28 +1,12 @@
 ﻿'use strict';
 
 
-var peopleController = function ($scope, $http) {
-   // var futureResponse = $http.get('Home/GetAllUsers')
 
-    $http({
-        method: "GET",
-        url: "Home/GetAllUsers"
-    }).then(function mySucces(response) {
-        $scope.people = response.data;
-    }, function myError(response) {
-        $scope.myWelcome = [{ id: 10 }, { id: 11 }, { id: 41 }];
-    });
+var peopleController = function ($scope,   $http) {
 
-    //.then(function (response) {
-  //      var people = response.data;
-    //    $scope.people = people;
-   // });
-    //var people = [{ id: 10 }, { id: 11 }, {id: 41}];
-    //var futureResponse = $http.get('users.json');
-    //futureResponse.success(function(data, status, headers, config) {
-           // people = data;
-    //});
- 
+
+    $scope.people = [{ Id: 2, Login: "gutd", Reiting: 5, BA: 2 }, { Id: 5, Login: "gufgjtd", Reiting: 4, BA: 2 }, { Id: 7, Login: "gutdd", Reiting: 5, BA: 2 }];
+
 
 };
     mainApp.controller('peopleController', peopleController);

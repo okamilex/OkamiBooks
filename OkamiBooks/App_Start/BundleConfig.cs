@@ -28,10 +28,14 @@ namespace OkamiBooks
                       "~/Content/site.css"));
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                 "~/Scripts/angular.js",
+                "~/Scripts/angular-cookies.js",
                 "~/Scripts/angular-route.js",
                 "~/Scripts/angular-animate.js",
+                "~/Scripts/angular-resource.js",
+                "~/Scripts/angular-translate.js",
                 "~/Scripts/app/app.js",
                 "~/Scripts/app/controllers/*.js"
+                
                 
                ));
                 

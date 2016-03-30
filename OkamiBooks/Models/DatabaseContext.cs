@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using OkamiBooks.Models.Entities;
 using OkamiBooks.Models.Entities.Medals;
+using OkamiBooks.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace OkamiBooks.Models
 {
@@ -16,8 +18,13 @@ namespace OkamiBooks.Models
             
         }
 
-        public DbSet<User> Users { get; set; } 
-        public DbSet<Role> Roles { get; set; }
+        public static DatabaseContext Create()
+        {
+            return new DatabaseContext();
+        }
+
+        public DbSet<ApplicationUser> Users { get; set; }
+        
         public DbSet<Book> Books { get; set; }
         public DbSet<Chapter> Chapters { get; set; }
         public DbSet<Comment> Comments { get; set; }
@@ -30,5 +37,18 @@ namespace OkamiBooks.Models
         public DbSet<MedalReader> MedalsReader { get; set; }
         public DbSet<MedalWriter> MedalsWriter { get; set; }
         public DbSet<ServiceRibbon> ServiceRibbons { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
+            modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
+            modelBuilder.Entity<IdentityUserRole>().HasKey(r => new
+            {
+                r.RoleId,
+                r.UserId
+            });
+            
+        }
     }
 }

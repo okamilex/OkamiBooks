@@ -7,7 +7,7 @@ namespace OkamiBooks.Models.Entities
 {
     public class Like : Entity
     {
-        public ApplicationUser User { get; set; }
-        public Comment Comment { get; set; }
+        public virtual ApplicationUser User { get; set; }
+        public virtual Comment Comment { get; set; }
     }
 }

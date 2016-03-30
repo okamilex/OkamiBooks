@@ -13,5 +13,9 @@ namespace OkamiBooks.Controllers
         {
             return View();
         }
+        public ActionResult UserPage()
+        {
+            return View();
+        }
     }
 }
