@@ -6,15 +6,15 @@ using System.Web.Mvc;
 
 namespace OkamiBooks.Controllers
 {
-    public class UserController : Controller
+    public class PeopleController : Controller
     {
-        // GET: User
+        // GET: People
         public ActionResult Index()
         {
             return View();
         }
         [HttpPost]
-        public JsonResult PostForBooks(int selectedId)
+        public JsonResult PostForUser(int selectedId)
         {
 
             var users = 5;

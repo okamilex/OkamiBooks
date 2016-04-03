@@ -6,18 +6,10 @@ using System.Web.Mvc;
 
 namespace OkamiBooks.Controllers
 {
-    public class BookController : Controller
+    public class LoginController : Controller
     {
-        // GET: Book
+        // GET: Login
         public ActionResult Index()
-        {
-            return View();
-        }
-        public ActionResult Read()
-        {
-            return View();
-        }
-        public ActionResult Work()
         {
             return View();
         }

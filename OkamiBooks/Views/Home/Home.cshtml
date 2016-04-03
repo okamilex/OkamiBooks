@@ -1,48 +1,74 @@
-﻿<div class="list-group col-lg-6">
-    <a href="#" class="list-group-item active">
+﻿
+
+
+<div class="list-group col-lg-4">
+    <a class="list-group-item active">
         <h4 class="list-group-item-heading">
             Last Books
         </h4>
     </a>
-
-   
-    
-    <a href="#"  ng-repeat="book in latestBooks" class="list-group-item">
-        <h4 class="list-group-item-heading">
+    <div ng-repeat="book in latestBooks" class="panel panel-default">
+        <div class="panel-heading">
             {{book.Name}}
-        </h4>
 
-        <p class="list-group-item-text">
-            {{book.Id}}
-        </p>
-    </a>
+            <a href="#/edit" type="button" class="btn btn-link btn-mini pull-right">Edit</a>
 
-
+            <a href="#/read" type="button" class="btn btn-link btn-mini pull-right">Read</a>
+        </div>
+        <div class="panel-footer">
+            ssagsg
+            <a href="#/comments" type="button" class="btn btn-link btn-mini pull-right">Comments <span class="badge">{{book.Id}}</span></a>
+        </div>
+    </div>
 </div>
-<div class="list-group col-lg-6">
-    <a href="#" class="list-group-item active">
+<div class="list-group col-lg-4">
+    <a class="list-group-item active">
         <h4 class="list-group-item-heading">
             Best Books
         </h4>
     </a>
-
-    <a href="#" ng-repeat="book in bestBooks" class="list-group-item">
-        <h4 class="list-group-item-heading">
+    <div ng-repeat="book in bestBooks" class="panel panel-default">
+        <div class="panel-heading">
             {{book.Name}}
-        </h4>
 
-        <p class="list-group-item-text">
-            {{book.Id}}
-        </p>
-    </a>
+
+           
+
+            <a href="#/read" type="button"   class="btn btn-link btn-mini pull-right"><span class="glyphicon glyphicon-book"  aria-hidden="true"></span></a>
+        </div>
+        <div class="panel-footer">
+            dsgdsg
+            
+            <button type="button"  class="btn btn-link btn-mini pull-right"><span class="glyphicon glyphicon-comment"  aria-hidden="true"></span> <span class="badge">{{book.Id}}</span></button>
+        </div>
+    </div>
 
 </div>
 
-<div class="col-lg-12"
-     word-cloud
-     words="hoh"
-     type="cloud"
-     sort="{string}"
-     ng-click="{string}">
-    
+<div class="col-lg-4">
+    <div class="list-group ">
+        <a class="list-group-item active">
+            <h4 class="list-group-item-heading">
+                Canegories
+            </h4>
+        </a>
+        <a class="list-group-item">
+            <h4 class="list-group-item-heading">
+                asggsa
+            </h4>
+        </a>
+        <a class="list-group-item">
+            <h4 class="list-group-item-heading">
+                lhjhg
+            </h4>
+        </a>
+    </div>
+    <div id="keyword_cloud">
+        <div class="dataBoxContent">
+            <div ng-repeat="word in words" class="cloud_{{ word.size }}" style="margin: 5px; float: left" title="Keyword wordSize {{ word.size }} times">{{ word.text }}</div>
+        </div>
+    </div>
+
+
 </div>
+

@@ -28,24 +28,61 @@ namespace OkamiBooks.Controllers
             return View();
         }
 
-        
-
-
-        [Authorize]
-        [Authorize(Roles = "Admin")]
-        public ActionResult MyAcount()
+        [HttpGet]
+        public JsonResult GetBestBooks()
         {
-            ViewBag.Message = "Your contact page.";
 
-            return View();
+            var users = 5;
+            return Json(users, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public JsonResult GetLastBooks()
+        {
+
+            var users = 5;
+            return Json(users, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public JsonResult GetCategories()
+        {
+
+            var users = 5;
+            return Json(users, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public JsonResult GetTags()
+        {
+
+            var users = 5;
+            return Json(users, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult PostForBook(int selectedId)
+        {
+
+            var users = 5;
+            return Json(users, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult PostForTags(int selectedId)
+        {
+
+            var users = 5;
+            return Json(users, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult PostForCategories(int selectedId)
+        {
+
+            var users = 5;
+            return Json(users, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult People()
-        {
-            ViewBag.Message = "Your contact page.";
 
-            return View();
-        }
+
+
+
+
 
     }
 }

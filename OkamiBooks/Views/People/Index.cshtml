@@ -1,0 +1,24 @@
+﻿<div class="container">
+    <h2>{{transaction.people}}:</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>{{transaction.Login}}</th>
+                <th>{{transaction.Reiting}}</th>
+                <th>{{transaction.BookAmount}}</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr ng-repeat="user in people">
+                <td>
+                    <a href="#/user">{{user.Login}}</a>
+                </td>
+                <td>{{user.Reiting}}</td>
+                <td>{{user.BA}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

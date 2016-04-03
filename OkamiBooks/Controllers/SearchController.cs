@@ -6,14 +6,13 @@ using System.Web.Mvc;
 
 namespace OkamiBooks.Controllers
 {
-    public class UserController : Controller
+    public class SearchController : Controller
     {
-        // GET: User
+        // GET: Search
         public ActionResult Index()
         {
             return View();
         }
-        [HttpPost]
         public JsonResult PostForBooks(int selectedId)
         {
 

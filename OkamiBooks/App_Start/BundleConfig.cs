@@ -24,7 +24,7 @@ namespace OkamiBooks
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/Tag.css",
                       "~/Content/site.css"));
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                 "~/Scripts/angular.js",
@@ -33,6 +33,8 @@ namespace OkamiBooks
                 "~/Scripts/angular-animate.js",
                 "~/Scripts/angular-resource.js",
                 "~/Scripts/angular-translate.js",
+                
+                "~/Scripts/angular-drag-and-drop-lists.min.js",
                 "~/Scripts/app/app.js",
                 "~/Scripts/app/controllers/*.js"
                 

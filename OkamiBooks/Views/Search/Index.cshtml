@@ -1,37 +1,29 @@
 ﻿
 
-<h2 class="col-lg-12">
-    {{user.Login}}
-</h2>
-
-<h2 class="col-lg-12">
-    {{UserId}}
-</h2>
-
-<h2 class="col-lg-12">
-    {{user.Raiting}}
-    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-</h2>
-
-
-
+<div id="custom-search-input">
+    <div class="input-group col-md-9 col-md-offset-2">
+        <input type="text" class="form-control input-lg" placeholder="search" />
+        <span class="input-group-btn">
+            <button class="btn btn-info btn-lg" type="button">
+                <i class="glyphicon glyphicon-search"></i>
+            </button>
+        </span>
+    </div>
+</div>
 
 
 <div class="list-group col-lg-12">
-    <a class="list-group-item active">
-        <h4 class="list-group-item-heading">
-           Books
-        </h4>
-    </a>
-    <div ng-repeat="book in user.Books" class="panel panel-default">
+    
+    <div ng-repeat="book in findBooks" class="panel panel-default">
         <div class="panel-heading">
             {{book.Name}}
             <button type="button" class="btn btn-link btn-mini pull-right">Edit</button>
             <button type="button" class="btn btn-link btn-mini pull-right">Read</button>
         </div>
         <div class="panel-footer">
-            ssagsg
+            asgsg
             <button type="button" class="btn btn-link btn-mini pull-right">Comments <span class="badge">{{book.Id}}</span></button>
         </div>
     </div>
+
 </div>

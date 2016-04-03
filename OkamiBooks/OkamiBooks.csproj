@@ -198,10 +198,18 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BookController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
+    <Compile Include="Controllers\EditController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PeopleController.cs" />
+    <Compile Include="Controllers\ReadController.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\RoleAdminController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -212,9 +220,11 @@
     <Compile Include="Models\AppRole.cs" />
     <Compile Include="Models\DatabaseContext.cs" />
     <Compile Include="Models\Entities\Book.cs" />
+    <Compile Include="Models\Entities\Category.cs" />
     <Compile Include="Models\Entities\Chapter.cs" />
     <Compile Include="Models\Entities\Comment.cs" />
     <Compile Include="Models\Entities\Entity.cs" />
+    <Compile Include="Models\Entities\IdSavior.cs" />
     <Compile Include="Models\Entities\Like.cs" />
     <Compile Include="Models\Entities\Medals\MedalCommentator.cs" />
     <Compile Include="Models\Entities\Medals\MedalCritic.cs" />
@@ -236,12 +246,17 @@
     <Content Include="App_Data\Database1_log.ldf">
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
-    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap1.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap2.css" />
+    <Content Include="Content\bootstrap3.css" />
+    <Content Include="Content\Tag.css" />
+    <Content Include="Scripts\angular-dnd.min.js" />
+    <Content Include="Scripts\angular-drag-and-drop-lists.min.js" />
     <Content Include="Scripts\app\app.js" />
+    <Content Include="Scripts\app\controllers\commentsController.js" />
+    <Content Include="Scripts\app\controllers\editController.js" />
     <Content Include="Scripts\app\controllers\homeController.js" />
-    <Content Include="Scripts\app\controllers\LoginController.js" />
-    <Content Include="Scripts\app\controllers\MainController.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -273,7 +288,12 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\app\controllers\loginController.js" />
     <Content Include="Scripts\app\controllers\peopleController.js" />
+    <Content Include="Scripts\app\controllers\readController.js" />
+    <Content Include="Scripts\app\controllers\registrationController.js" />
+    <Content Include="Scripts\app\controllers\searchController.js" />
+    <Content Include="Scripts\app\controllers\userController.js" />
     <Content Include="Scripts\app\controllers\userPageController.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -293,6 +313,7 @@
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="ClassDiagram1.cd" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -1081,20 +1102,23 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\MyAcount.cshtml" />
-    <Content Include="Views\Home\People.cshtml" />
     <Content Include="Views\RoleAdmin\Create.cshtml" />
     <Content Include="Views\RoleAdmin\IndexRoles.cshtml" />
     <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Book\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\Book\Read.cshtml" />
-    <Content Include="Views\Book\Work.cshtml" />
-    <Content Include="Views\User\UserPage.cshtml" />
-    <Content Include="Views\User\UsersList.cshtml" />
     <Content Include="translation_ru.json" />
     <Content Include="translation_en.json" />
+    <Content Include="Views\Main\Index.cshtml" />
+    <Content Include="Views\People\Index.cshtml" />
+    <Content Include="Views\Edit\Index.cshtml" />
+    <Content Include="Views\Read\Index.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Comments\Index.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Registration\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
