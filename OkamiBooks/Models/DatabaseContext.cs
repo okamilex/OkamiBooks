@@ -23,10 +23,14 @@ namespace OkamiBooks.Models
             return new DatabaseContext();
         }
 
-        public DbSet<ApplicationUser> Users { get; set; }
         
+        
+
+        public DbSet<MyUser> MyUsers { get; set; }
+        public DbSet<IdSavior> IdSaviors { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Chapter> Chapters { get; set; }
+        public DbSet<Category> Categories { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Like> Likes { get; set; }
         public DbSet<Tags> Tags { get; set; }

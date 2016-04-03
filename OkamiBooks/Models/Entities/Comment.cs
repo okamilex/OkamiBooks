@@ -7,10 +7,12 @@ namespace OkamiBooks.Models.Entities
 {
     public class Comment : Entity
     {
-        public virtual ApplicationUser User { get; set; }
-        public virtual Book Book { get; set; }
+        //public virtual ApplicationUser User { get; set; }
+
+        public long User { get; set; }
+        public long Book { get; set; }
         public string Text { get; set; }
-        public virtual List<Like> Likes { get; set; }
+        public List<long> Likes { get; set; }
 
     }
 }

@@ -7,7 +7,7 @@ namespace OkamiBooks.Models.Entities
 {
     public class Chapter : Entity
     {
-        public virtual Book Book { get; set; }
+        public long Book { get; set; }
         public string Name { get; set; }
         public string BriefText { get; set; }
         public string Text { get; set; }
