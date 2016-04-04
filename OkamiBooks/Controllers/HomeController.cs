@@ -215,10 +215,11 @@ namespace OkamiBooks.Controllers
                             }
                             else
                             {
-                                userId = user.Id = context.IdSaviors.ToList()[0].MaxUserId++;
+                                context.MyUsers.Add(user);
+                                userId = user.Id;
                                 user.Role = "guest";
                                 accsessToken = user.AcsesToken = new Random().Next(1, 100000);
-                                context.MyUsers.Add(user);
+                                
                                 context.SaveChanges();
                             }
                         }
@@ -227,10 +228,10 @@ namespace OkamiBooks.Controllers
                 }
                 else
                 {
-                    userId = user.Id = context.IdSaviors.ToList()[0].MaxUserId++;
+                    context.MyUsers.Add(user);
+                    userId = user.Id; 
                     user.Role = "guest";
                     accsessToken = user.AcsesToken = new Random().Next(1, 100000);
-                    context.MyUsers.Add(user);
                     context.SaveChanges();
                 }
             }

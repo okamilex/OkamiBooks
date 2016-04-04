@@ -52,6 +52,10 @@
                         templateUrl: "/registration",
                         controller: 'registrationController'
                     }).
+                    when('/409', {
+                        templateUrl: "/409"
+                    }).
+
                  otherwise({
                      redirectTo: '/main'
                  });

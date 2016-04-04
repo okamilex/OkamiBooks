@@ -1,26 +1,28 @@
 ﻿(function (global, ng) {
     'use strict';
-    function editController($scope, $location) {
-        $('#login-form-link').click(function (e) {
-            $("#login-form").delay(100).fadeIn(100);
-            $("#register-form").fadeOut(100);
-            $('#register-form-link').removeClass('active');
-            $(this).addClass('active');
-            e.preventDefault();
-        });
-        $('#register-form-link').click(function (e) {
-            $("#register-form").delay(100).fadeIn(100);
-            $("#login-form").fadeOut(100);
-            $('#login-form-link').removeClass('active');
-            $(this).addClass('active');
-            e.preventDefault();
-        });
+    function loginController($scope, $location, $http, $cookies) {
+        $scope.UserInfo = {
+            UserEmail: '',
+            UserPassword: '',
+            ConfirmPassword: ''
+        }
 
+        $scope.login = function () {
+                $http.post(
+                    '/Login/RegistrationOfNewUser', {
+                        Email: $scope.UserInfo.UserEmail,
+                        Password: $scope.UserInfo.UserPassword
+                    }
+                    ).
+                    success(function (data) {
+                        $cookies.put('userId', data[0]);
+                        $cookies.put('accsessToken', data[1]);
+                        $location.url('/main');
+                    }).
+                    error(function () {
+                        $location.url('/409');
+                    });
+        }
     }
-
-    
-
-
-
-    app.controller('editController', editController);
+    app.controller('loginController', loginController);
 }(window, angular));
