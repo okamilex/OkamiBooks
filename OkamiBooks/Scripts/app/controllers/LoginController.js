@@ -15,9 +15,11 @@
                     }
                     ).
                     success(function (data) {
-                        $cookies.put('userId', data[0]);
-                        $cookies.put('accsessToken', data[1]);
-                        $location.url('/main');
+                        if (data === "200") {
+                            $cookies.put('userId', data[1]);
+                            $cookies.put('accsessToken', data[2]);
+                            $location.url('/main');
+                        }
                     }).
                     error(function () {
                         $location.url('/409');

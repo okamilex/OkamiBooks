@@ -1,8 +1,16 @@
 ﻿(function (global, ng) {
     'use strict';
     function editController($scope, $location) {
-        $scope.categories = [{ Name: "Sci-fi" }, { Name: "Fantazy" }, { Name: "Kids" }, { Name: "Adolts" }];
-        $scope.tags = [{ Name: "hds" }, { Name: "etu" }, { Name: "jggds" }, { Name: "hdsgs" }];
+        $http({
+            method: "GET",
+            url: "Home/GetCategories"
+        }).then(function mySucces(response) {
+            $scope.categories = response.data;
+        }, function myError(response) {
+            $scope.myWelcome = [{ id: 10 }, { id: 11 }, { id: 41 }];
+        });
+
+          $scope.tags = [{ Name: "hds" }, { Name: "etu" }, { Name: "jggds" }, { Name: "hdsgs" }];
 
     }
 

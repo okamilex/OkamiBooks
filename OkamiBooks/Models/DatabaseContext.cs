@@ -25,8 +25,8 @@ namespace OkamiBooks.Models
 
         
         
-
-        public DbSet<MyUser> MyUsers { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        
         public DbSet<IdSavior> IdSaviors { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Chapter> Chapters { get; set; }

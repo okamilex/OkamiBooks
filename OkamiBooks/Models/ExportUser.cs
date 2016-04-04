@@ -7,7 +7,7 @@ namespace OkamiBooks.Models
 {
     public class ExportUser
     {
-        public long Id { get; set; }
+        public string Id { get; set; }
         public string Email { get; set; }
         public bool Medal1 { get; set; }
         public bool Medal2 { get; set; }

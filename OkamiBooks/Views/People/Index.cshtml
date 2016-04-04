@@ -4,9 +4,8 @@
     <table class="table">
         <thead>
             <tr>
-                <th>{{transaction.Login}}</th>
-                <th>{{transaction.Reiting}}</th>
-                <th>{{transaction.BookAmount}}</th>
+                <th>{{transaction.Email}}</th>
+                
 
             </tr>
         </thead>
@@ -14,10 +13,9 @@
 
             <tr ng-repeat="user in people">
                 <td>
-                    <a href="#/user">{{user.Login}}</a>
+                    <a href="#/user">{{user.Email}}</a>
                 </td>
-                <td>{{user.Reiting}}</td>
-                <td>{{user.BA}}</td>
+                
             </tr>
         </tbody>
     </table>

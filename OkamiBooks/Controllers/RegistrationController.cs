@@ -25,8 +25,9 @@ namespace OkamiBooks.Controllers
             using (var context = new DatabaseContext())
             {
                 bool userExist = false;
-                MyUser user = new MyUser();
-                context.MyUsers.ForEach(x =>
+                ApplicationUser applicationUser = new ApplicationUser();
+                
+                context.ApplicationUsers.ForEach(x =>
                 {
                     if (x.Email == userEmail)
                     {
@@ -39,9 +40,11 @@ namespace OkamiBooks.Controllers
                 }
                 else
                 {
-                    user.Email = userEmail;
-                    user.HashedPassword = userPassword;
-                    user.Role = "user";
+                    context.ApplicationUsers.Add(applicationUser = new ApplicationUser());
+                    applicationUser.Email = userEmail;
+                    applicationUser.UserName = userEmail;
+                    applicationUser.PasswordHash = userPassword;
+                    applicationUser.MyRole = "user";
                     ServiceRibbon sr = new ServiceRibbon();
                     MedalCommentator medalCommentator = new MedalCommentator();
                     MedalCritic medalCritic = new MedalCritic();
@@ -53,16 +56,17 @@ namespace OkamiBooks.Controllers
                     context.MedalsLiker.Add(medalLiker);
                     context.MedalsReader.Add(medalReader);
                     context.MedalsWriter.Add(medalWriter);
-                    sr.MedalCommentator = medalCommentator.Id;
-                    sr.MedalCritic = medalCritic.Id;
-                    sr.MedalLiker = medalLiker.Id;
-                    sr.MedalReader = medalReader.Id;
-                    sr.MedalWriter = medalWriter.Id;
+                    sr.MedalCommentator = context.IdSaviors.ToList()[0].MaxMedalCommentator;
+                    sr.MedalCritic = context.IdSaviors.ToList()[0].MaxMedalCritic;
+                    sr.MedalLiker = context.IdSaviors.ToList()[0].MaxMedalLiker;
+                    sr.MedalReader = context.IdSaviors.ToList()[0].MaxMedalReader;
+                    sr.MedalWriter = context.IdSaviors.ToList()[0].MaxMedalWriter;
                     context.ServiceRibbons.Add(sr);
-                    user.MedalsList = sr.Id;
-                    context.MyUsers.Add(user);
-                    sr.User = user.Id;
+                    applicationUser.MedalsList = context.IdSaviors.ToList()[0].MaxServiceRibbon++;
+                    
+                    sr.ApplicationUser = userEmail;
                 }
+                context.SaveChanges();
             }
             return Json(new {Code = code}, JsonRequestBehavior.AllowGet);
         }

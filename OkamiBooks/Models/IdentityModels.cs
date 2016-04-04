@@ -13,18 +13,23 @@ namespace OkamiBooks.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
-        
-        public virtual ServiceRibbon MedalsList { get; set; }
-        public virtual List<Book> Books { get; set; }
-        public virtual List<Comment> Comments { get; set; }
-        public virtual List<Like> Likes { get; set; }
-        public virtual List<UserBookInfo> BooksInfo { get; set; }
-        public int TextSize { get; set; }
-        public int TextWidth { get; set; }
-        public int Theme { get; set; }
-        public int Language { get; set; }
 
-    public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
+        public string MyRole { get; set; }
+        public long MedalsList { get; set; }
+        public long AcsesToken { get; set; }
+        public List<long> Books { get; set; }
+        public List<long> Comments { get; set; }
+        public List<long> Likes { get; set; }
+        public List<long> BooksInfo { get; set; }
+
+
+        public long BookId { get; set; }
+        public long TagId { get; set; }
+        public string UserNameToGet { get; set; }
+        public long CategoriId { get; set; }
+        public long ChapterId { get; set; }
+
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);

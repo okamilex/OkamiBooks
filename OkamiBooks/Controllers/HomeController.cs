@@ -23,7 +23,16 @@ namespace OkamiBooks.Controllers
         {
             using (var context = new DatabaseContext())
             {
-                context.Tags.Add(new Tags {Name = "first", Books = new List<long>()});
+                if (context.Categories.ToList().Count < 1)
+                {
+                    context.Categories.Add(new Category {Name = "Sci-fi"});
+                    context.Categories.Add(new Category { Name = "FaryTail" });
+                }
+                if (context.IdSaviors.ToList().Count < 1)
+                {
+                    context.IdSaviors.Add(new IdSavior {MaxGuest = 1, MaxBook = 1, MaxComment = 1, MaxLike = 1, MaxMedalCommentator = 1, MaxMedalCritic = 1, MaxMedalLiker = 1, MaxMedalReader = 1, MaxMedalWriter = 1, MaxServiceRibbon = 1, MaxUserBookInfo = 1});
+                }
+                
                 context.SaveChanges();
             }
             return View();
@@ -142,72 +151,69 @@ namespace OkamiBooks.Controllers
             return Json(tags, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public JsonResult PostForBook(long selectedId, long userId)
+        public JsonResult PostForBook(long selectedId, string userName)
         {
             
 
             using (var context = new DatabaseContext())
             {
-                MyUser user = new MyUser();
-                context.MyUsers.ForEach(x =>
+                
+                context.ApplicationUsers.ForEach(x =>
                 {
-                    if (x.Id == userId)
+                    if (x.UserName == userName)
                     {
-                        user = x;
+                        x.BookId = selectedId;
                     }
                 });
-                user.BookId = selectedId;
+                
             }
             return Json(null, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public JsonResult PostForTags(long selectedId, long userId)
+        public JsonResult PostForTags(long selectedId, string userName)
         {
             using (var context = new DatabaseContext())
             {
-                MyUser user = new MyUser();
-                context.MyUsers.ForEach(x =>
+                
+                context.ApplicationUsers.ForEach(x =>
                 {
-                    if (x.Id == userId)
+                    if (x.UserName == userName)
                     {
-                        user = x;
+                        x.TagId = selectedId;
                     }
                 });
-                user.TagId = selectedId;
             }
             return Json(null, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public JsonResult PostForCategories(long selectedId, long userId)
+        public JsonResult PostForCategories(long selectedId, string userName)
         {
             using (var context = new DatabaseContext())
             {
-                MyUser user = new MyUser();
-                context.MyUsers.ForEach(x =>
+                
+                context.ApplicationUsers.ForEach(x =>
                 {
-                    if (x.Id == userId)
+                    if (x.UserName == userName)
                     {
-                        user = x;
+                        x.CategoriId = selectedId;
                     }
                 });
-                user.CategoriId = selectedId;
             }
             return Json(null, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public JsonResult UserGetting(long userId, long accsessToken)
+        public JsonResult UserGetting(string userName, long accsessToken)
         {
-            
-            MyUser user = new MyUser();
+            ApplicationUser applicationUser = new ApplicationUser();
             using (var context = new DatabaseContext())
             {
                
                 
-                if (userId > 0)
+                if (userName != "-1")
                 {
-                    context.MyUsers.ForEach(x =>
+                    context.ApplicationUsers.ForEach(x =>
                     {
-                        if (x.Id == userId)
+                        if (x.UserName == userName)
                         {
                             if (accsessToken == x.AcsesToken)
                             {
@@ -215,11 +221,11 @@ namespace OkamiBooks.Controllers
                             }
                             else
                             {
-                                context.MyUsers.Add(user);
-                                userId = user.Id;
-                                user.Role = "guest";
-                                accsessToken = user.AcsesToken = new Random().Next(1, 100000);
+                                context.ApplicationUsers.Add(applicationUser);
                                 
+                                userName = "gest" + context.IdSaviors.ToList()[0].MaxGuest++;
+                                applicationUser.MyRole = "guest";
+                                accsessToken = applicationUser.AcsesToken = new Random().Next(1, 100000);
                                 context.SaveChanges();
                             }
                         }
@@ -228,16 +234,16 @@ namespace OkamiBooks.Controllers
                 }
                 else
                 {
-                    context.MyUsers.Add(user);
-                    userId = user.Id; 
-                    user.Role = "guest";
-                    accsessToken = user.AcsesToken = new Random().Next(1, 100000);
+                    context.ApplicationUsers.Add(applicationUser);
+                    userName = "gest" + context.IdSaviors.ToList()[0].MaxGuest++;
+                    applicationUser.MyRole = "guest";
+                    accsessToken = applicationUser.AcsesToken = new Random().Next(1, 100000);
                     context.SaveChanges();
                 }
             }
-            var resolt = new List<long>();
-            resolt.Add(userId);
-            resolt.Add(accsessToken);
+            var resolt = new List<string>();
+            resolt.Add(userName);
+            resolt.Add(accsessToken.ToString());
             return Json(resolt, JsonRequestBehavior.AllowGet);
         }
     }

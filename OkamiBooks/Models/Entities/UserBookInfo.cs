@@ -7,8 +7,9 @@ namespace OkamiBooks.Models.Entities
 {
     public class UserBookInfo : Entity
     {
-        //public virtual ApplicationUser User { get; set; }
 
+
+        public string ApplicationUser { get; set; }
         public long User { get; set; }
         public long Book { get; set; }
         public int Rating { get; set; }

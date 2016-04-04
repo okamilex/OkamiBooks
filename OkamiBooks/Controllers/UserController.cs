@@ -17,23 +17,23 @@ namespace OkamiBooks.Controllers
             return View();
         }
         [HttpPost]
-        public JsonResult GetUser(int userId)
+        public JsonResult GetUser(string userName, long accsessToken)
         {
             var user = new ExportUser();
-            long gettingUserId = 0;
+            string gettingUserName = "";
             using (var context = new DatabaseContext())
             {
-                context.MyUsers.ForEach(x =>
+                context.ApplicationUsers.ForEach(x =>
                 {
-                    if (x.Id == userId)
+                    if (x.UserName == userName)
                     {
-                        gettingUserId = x.UserId;
+                        gettingUserName = x.UserName;
                     }
 
                 });
-                    context.MyUsers.ForEach(x =>
+                    context.ApplicationUsers.ForEach(x =>
                 {
-                    if (x.Id == gettingUserId)
+                    if (x.UserName == gettingUserName)
                     {
                         ServiceRibbon serviceRibbon = new ServiceRibbon();
                         bool medal1 = false;
@@ -90,23 +90,23 @@ namespace OkamiBooks.Controllers
             return Json(user, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public JsonResult GetBooks(int userId)
+        public JsonResult GetBooks(string userName, long accsessToken)
         {
             var books = new List<ExportBook>();
-            long gettingUserId = 0;
+            string gettingUserName = "";
             using (var context = new DatabaseContext())
             {
-                context.MyUsers.ForEach(x =>
+                context.ApplicationUsers.ForEach(x =>
                 {
-                    if (x.Id == userId)
+                    if (x.UserName == userName)
                     {
-                        gettingUserId = x.UserId;
+                        gettingUserName = x.UserNameToGet;
                     }
 
                 });
-                context.MyUsers.ForEach(x =>
+                context.ApplicationUsers.ForEach(x =>
                 {
-                    if (x.Id == gettingUserId)
+                    if (x.UserName == gettingUserName)
                     {
                         x.Books.ForEach(bookId =>
                         {
@@ -124,21 +124,20 @@ namespace OkamiBooks.Controllers
             return Json(books, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public JsonResult PostForBook(long selectedId, long userId)
+        public JsonResult PostForBook(long selectedId, string userName)
         {
 
 
             using (var context = new DatabaseContext())
             {
                 MyUser user = new MyUser();
-                context.MyUsers.ForEach(x =>
+                context.ApplicationUsers.ForEach(x =>
                 {
-                    if (x.Id == userId)
+                    if (x.UserName == userName)
                     {
-                        user = x;
+                        x.BookId = selectedId;
                     }
                 });
-                user.BookId = selectedId;
             }
             return Json(null, JsonRequestBehavior.AllowGet);
         }

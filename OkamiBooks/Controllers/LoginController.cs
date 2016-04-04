@@ -19,25 +19,30 @@ namespace OkamiBooks.Controllers
         public JsonResult RegistrationOfNewUser(string userEmail, string userPassword)
         {
             var code = 200;
-            long userId = -1;
+            string userName = "";
             long accsessToken = 0;
             using (var context = new DatabaseContext())
             {
-                context.MyUsers.ForEach(x =>
+                context.ApplicationUsers.ForEach(x =>
                 {
                     if (x.Email == userEmail)
                     {
-                        if (x.HashedPassword == userPassword)
+                        if (x.PasswordHash == userPassword)
                         {
-                            userId = x.Id;
+                            userName = x.UserName;
                             accsessToken = x.AcsesToken = new Random().Next(1, 100000);
+                        }
+                        else
+                        {
+                            code = 409;
                         }
                     }
                 });
             }
-            var resolt = new List<long>();
-            resolt.Add(userId);
-            resolt.Add(accsessToken);
+            var resolt = new List<string>();
+            resolt.Add(code.ToString());
+            resolt.Add(userName);
+            resolt.Add(accsessToken.ToString());
             return Json(resolt, JsonRequestBehavior.AllowGet);
         }
     }

@@ -10,8 +10,9 @@ namespace OkamiBooks.Models.Entities
     public class ServiceRibbon : Entity
     {
 
-        //public virtual ApplicationUser User { get; set; }
+       
 
+        public string ApplicationUser { get; set; }
         public long User { get; set; }
         public long MedalWriter { get; set; }
         public long MedalCommentator { get; set; }

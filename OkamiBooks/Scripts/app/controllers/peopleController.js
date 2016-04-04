@@ -10,6 +10,8 @@
         }, function myError(response) {
             
         });
+        var people = $scope.people;
+        people = people;
         if ($cookies.get('userId') == null) {
             var postData = [-1, -1];
             $http({

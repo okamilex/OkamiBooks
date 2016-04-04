@@ -88,6 +88,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -232,10 +233,8 @@
     <Compile Include="Models\Entities\Medals\MedalReader.cs" />
     <Compile Include="Models\Entities\Medals\MedalWriter.cs" />
     <Compile Include="Models\Entities\MyUser.cs" />
-    <Compile Include="Models\Entities\Role.cs" />
     <Compile Include="Models\Entities\Medals\ServiceRibbon.cs" />
     <Compile Include="Models\Entities\Tags.cs" />
-    <Compile Include="Models\Entities\User.cs" />
     <Compile Include="Models\ExportBook.cs" />
     <Compile Include="Models\ExportTags.cs" />
     <Compile Include="Models\ExportUser.cs" />

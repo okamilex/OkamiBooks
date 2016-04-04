@@ -10,11 +10,16 @@
 
         $scope.register = function () {
             if ($scope.UserInfo.UserPassword === $scope.UserInfo.ConfirmPassword) {
+                var data = {
+                    'userEmail': $scope.UserInfo.UserEmail,
+                    'userPassword': $scope.UserInfo.UserPassword
+                };
+                debugger;
+                
+                
                 $http.post(
-                    '/Registration/RegistrationOfNewUser', {
-               Email: $scope.UserInfo.UserEmail,
-               Password: $scope.UserInfo.UserPassword
-                    }
+                    '/Registration/RegistrationOfNewUser', 
+                    data
                     ).
                     success(function (data) {
                         $location.url('/login');

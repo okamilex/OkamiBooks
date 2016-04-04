@@ -33,23 +33,33 @@
         }, function myError(response) {
             $scope.myWelcome = [{ id: 10 }, { id: 11 }, { id: 41 }];
         });
-        if (($cookies.getObject('userId') === null) || ($cookies.getObject('userId') === -1)) {
+        
+        if ($cookies.getObject('userName') == undefined)  {
             $http.post(
                 'Home/UserGetting', {
-                    userId: -1,
+                    userName: -1,
                     accsessToken: -1
                 }
             ).
             success(function (data) {
-                $cookies.put('userId', data[0]);
+                $cookies.put('userName', data[0]);
                 $cookies.put('accsessToken', data[1]);
             }).
             error(function () {
                 deferredObject.resolve({ success: false });
             });
-
-            
         }
+        if (($cookies.getObject('lang') == undefined)) {
+            {
+                $cookies.put('lang', 'en');
+            }
+        };
+        if (($cookies.getObject('theme') == undefined)) {
+            {
+                $cookies.put('theme', 'l');
+            }
+        };
+
     }
     app.controller('homeController', homeController);
 }(window, angular));

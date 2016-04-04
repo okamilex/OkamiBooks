@@ -19,27 +19,37 @@ namespace OkamiBooks.Controllers
         [HttpGet]
         public JsonResult GetUsers()
         {
+            var findUsers = new List<ApplicationUser>();
             var users = new List<ExportUser>();
             using (var context = new DatabaseContext())
             {
-                context.MyUsers.ForEach(x =>
+                context.ApplicationUsers.ForEach(x =>
                 {
-                    if (x.Role != "guest")
+                    if (x.MyRole != "guest")
                     {
-                        ServiceRibbon serviceRibbon = new ServiceRibbon();
+                        findUsers.Add(x);
+                    }
+                });
+                findUsers.ForEach(x => 
+                {
+
+                    ServiceRibbon serviceRibbon = new ServiceRibbon();
                         bool medal1 = false;
                         bool medal2 = false;
                         bool medal3 = false;
                         bool medal4 = false;
                         bool medal5 = false;
-                        context.ServiceRibbons.ToList().ForEach(sr =>
+                        context.ServiceRibbons.ForEach(sr =>
                         {
-                            if (sr.Id == x.MedalsList)
-                            {
-                                serviceRibbon = sr;
-                            }
+                            if (sr.Id != x.MedalsList) return;
+                            serviceRibbon.MedalCommentator = sr.MedalCommentator;
+                            serviceRibbon.MedalCritic = sr.MedalCritic;
+                            serviceRibbon.MedalLiker = sr.MedalLiker;
+                            serviceRibbon.MedalReader = sr.MedalReader;
+                            serviceRibbon.MedalWriter = sr.MedalWriter;
+                            serviceRibbon.ApplicationUser = sr.ApplicationUser;
                         });
-                        context.MedalsCommentator.ToList().ForEach(mc =>
+                        context.MedalsCommentator.ForEach(mc =>
                         {
                             if (mc.Id == serviceRibbon.MedalCommentator)
                             {
@@ -75,26 +85,26 @@ namespace OkamiBooks.Controllers
                             }
                         });
                         users.Add(new ExportUser {Id = x.Id, Email = x.Email, Medal1 = medal1, Medal2 = medal2, Medal3 = medal3, Medal4 = medal4, Medal5 = medal5});
-                    }
+                    
                 });
             }
             return Json(users, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public JsonResult PostForUser(long selectedId, long userId)
+        public JsonResult PostForUser(string selectedId, string userName)
         {
             using (var context = new DatabaseContext())
             {
-                MyUser user = new MyUser();
-                context.MyUsers.ForEach(x =>
+               
+                context.ApplicationUsers.ForEach(x =>
                 {
-                    if (x.Id == userId)
+                    if (x.UserName == userName)
                     {
-                        user = x;
+                        x.UserNameToGet = selectedId;
                     }
                 });
-                user.UserId = selectedId;
+               
             }
             return Json(null, JsonRequestBehavior.AllowGet);
         }

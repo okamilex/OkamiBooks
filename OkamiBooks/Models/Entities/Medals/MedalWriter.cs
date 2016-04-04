@@ -10,19 +10,6 @@ namespace OkamiBooks.Models.Entities
         public string Name { get; set; }
         public int Type { get; set; }
         public int Progress { get; set; }
-        public bool IsReceived {
-            get
-            {
-                if (Progress == 100)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            set { IsReceived = value; }
-        }
+        public bool IsReceived { get; set; }
     }
 }
