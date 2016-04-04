@@ -104,7 +104,8 @@ namespace OkamiBooks.Controllers
                         x.UserNameToGet = selectedId;
                     }
                 });
-               
+                context.SaveChanges();
+
             }
             return Json(null, JsonRequestBehavior.AllowGet);
         }

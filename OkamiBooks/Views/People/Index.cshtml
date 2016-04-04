@@ -12,8 +12,10 @@
         <tbody>
 
             <tr ng-repeat="user in people">
-                <td>
-                    <a href="#/user">{{user.Email}}</a>
+                <td >
+                    
+                        <button ng-click="setUser( user.Email)" class="btn btn-link" type="button">{{user.Email}}</button>
+                    
                 </td>
                 
             </tr>

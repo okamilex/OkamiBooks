@@ -41,6 +41,10 @@ namespace OkamiBooks.Controllers
                 else
                 {
                     context.ApplicationUsers.Add(applicationUser = new ApplicationUser());
+                    applicationUser.Books = new List<long>();
+                    applicationUser.Comments = new List<long>();
+                    applicationUser.Likes = new List<long>();
+                    applicationUser.BooksInfo = new List<long>();
                     applicationUser.Email = userEmail;
                     applicationUser.UserName = userEmail;
                     applicationUser.PasswordHash = userPassword;

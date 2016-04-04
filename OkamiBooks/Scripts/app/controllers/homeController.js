@@ -34,7 +34,9 @@
             $scope.myWelcome = [{ id: 10 }, { id: 11 }, { id: 41 }];
         });
         
-        if ($cookies.getObject('userName') == undefined)  {
+
+        if (($cookies.get('userName') == undefined) || ($cookies.get('userName') === 'guest3')) {
+            debugger;
             $http.post(
                 'Home/UserGetting', {
                     userName: -1,
@@ -49,16 +51,29 @@
                 deferredObject.resolve({ success: false });
             });
         }
-        if (($cookies.getObject('lang') == undefined)) {
+        if (($cookies.get('lang') == undefined)) {
             {
                 $cookies.put('lang', 'en');
             }
         };
-        if (($cookies.getObject('theme') == undefined)) {
+        
+        if (($cookies.get('theme') == undefined)) {
             {
                 $cookies.put('theme', 'l');
             }
         };
+        $scope.theme = $cookies.get('theme');
+        $scope.changeTheme = function () {
+            if (($cookies.get('theme') === 'b')) {
+                
+                    $cookies.put('theme', 'l');
+                
+            } else {
+                $cookies.put('theme', 'b');
+            }
+
+        };
+
 
     }
     app.controller('homeController', homeController);

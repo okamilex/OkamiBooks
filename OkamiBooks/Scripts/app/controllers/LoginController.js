@@ -3,20 +3,24 @@
     function loginController($scope, $location, $http, $cookies) {
         $scope.UserInfo = {
             UserEmail: '',
-            UserPassword: '',
-            ConfirmPassword: ''
+            UserPassword: ''
         }
 
         $scope.login = function () {
                 $http.post(
                     '/Login/RegistrationOfNewUser', {
-                        Email: $scope.UserInfo.UserEmail,
-                        Password: $scope.UserInfo.UserPassword
+                        userEmail: $scope.UserInfo.UserEmail,
+                        userPassword: $scope.UserInfo.UserPassword
                     }
                     ).
                     success(function (data) {
-                        if (data === "200") {
-                            $cookies.put('userId', data[1]);
+                        if (data.code === '200') {
+                            $cookies.put('userName', data.userName);
+                            $cookies.put('accsessToken', data.accsessToken);
+                            $location.url('/main');
+                        }
+                        if (data[0] === '200') {
+                            $cookies.put('userName', data[1]);
                             $cookies.put('accsessToken', data[2]);
                             $location.url('/main');
                         }

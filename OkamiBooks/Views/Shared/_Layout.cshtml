@@ -7,10 +7,11 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
-    <link rel="stylesheet" ng-href="~/Content/bootstrap2.css"
-          ng-if="theme == 1">
-    <link rel="stylesheet" ng-href="~/Content/bootstrap3.css"
-          ng-if="theme != 1">
+    <link rel="stylesheet" ng-controller="layoutControler" ng-href="~/Content/bootstrap2.css"
+          ng-if="theme === 'b'">
+    <link rel="stylesheet" ng-controller="layoutControler" ng-href="~/Content/bootstrap3.css"
+          ng-if="theme === 'l'">
+    <link rel="stylesheet"  ng-href="~/Content/bootstrap3.css">
     
 </head>
 <body>
@@ -49,10 +50,10 @@
                 </span>
 
                 <span class="col-lg-6">
-                    <button ng-click="newTheme(this)" class="pull-right btn btn-link" style="vertical-align: bottom"> <span class="glyphicon glyphicon-eye-open" style="margin-right: 5px" aria-hidden="true"></span></button>
-                    <button ng-click="newLang(this)" class="pull-right btn btn-link" style="vertical-align: bottom"> <span class="glyphicon glyphicon-globe" style="margin-right: 5px" aria-hidden="true"></span></button>
-                    <button ng-click="newLang(this)" class="pull-right btn btn-link" style="vertical-align: bottom"> <span class="glyphicon glyphicon-text-width" style="margin-right: 5px" aria-hidden="true"></span></button>
-                    <button ng-click="newLang(this)" class="pull-right btn btn-link" style="vertical-align: bottom"> <span class="glyphicon glyphicon-text-height" style="margin-right: 5px" aria-hidden="true"></span></button>
+                    <button ng-click="changeTheme()" type="button" ng-controller="layoutControler" class="pull-right btn btn-link" style="vertical-align: bottom"> <span class="glyphicon glyphicon-eye-open" style="margin-right: 5px" aria-hidden="true"></span></button>
+                    <button ng-click="" class="pull-right btn btn-link" style="vertical-align: bottom"> <span class="glyphicon glyphicon-globe" style="margin-right: 5px" aria-hidden="true"></span></button>
+                    <button ng-click="" class="pull-right btn btn-link" style="vertical-align: bottom"> <span class="glyphicon glyphicon-text-width" style="margin-right: 5px" aria-hidden="true"></span></button>
+                    <button ng-click="" class="pull-right btn btn-link" style="vertical-align: bottom"> <span class="glyphicon glyphicon-text-height" style="margin-right: 5px" aria-hidden="true"></span></button>
                     </span>
 
 </div>

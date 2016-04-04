@@ -25,14 +25,13 @@ namespace OkamiBooks.Controllers
             {
                 if (context.Categories.ToList().Count < 1)
                 {
-                    context.Categories.Add(new Category {Name = "Sci-fi"});
+                    context.Categories.Add(new Category { Name = "Sci-fi" });
                     context.Categories.Add(new Category { Name = "FaryTail" });
+                    context.IdSaviors.Add(new IdSavior { MaxGuest = 1, MaxBook = 1, MaxComment = 1, MaxLike = 1, MaxMedalCommentator = 1, MaxMedalCritic = 1, MaxMedalLiker = 1, MaxMedalReader = 1, MaxMedalWriter = 1, MaxServiceRibbon = 1, MaxUserBookInfo = 1 });
+
                 }
-                if (context.IdSaviors.ToList().Count < 1)
-                {
-                    context.IdSaviors.Add(new IdSavior {MaxGuest = 1, MaxBook = 1, MaxComment = 1, MaxLike = 1, MaxMedalCommentator = 1, MaxMedalCritic = 1, MaxMedalLiker = 1, MaxMedalReader = 1, MaxMedalWriter = 1, MaxServiceRibbon = 1, MaxUserBookInfo = 1});
-                }
-                
+
+
                 context.SaveChanges();
             }
             return View();
@@ -223,7 +222,8 @@ namespace OkamiBooks.Controllers
                             {
                                 context.ApplicationUsers.Add(applicationUser);
                                 
-                                userName = "gest" + context.IdSaviors.ToList()[0].MaxGuest++;
+                                applicationUser.UserName = applicationUser.Email = userName = "guest" + context.IdSaviors.ToList()[0].MaxGuest++;
+
                                 applicationUser.MyRole = "guest";
                                 accsessToken = applicationUser.AcsesToken = new Random().Next(1, 100000);
                                 context.SaveChanges();
@@ -235,7 +235,8 @@ namespace OkamiBooks.Controllers
                 else
                 {
                     context.ApplicationUsers.Add(applicationUser);
-                    userName = "gest" + context.IdSaviors.ToList()[0].MaxGuest++;
+                    applicationUser.UserName = applicationUser.Email = userName = "guest" + context.IdSaviors.ToList()[0].MaxGuest++;
+
                     applicationUser.MyRole = "guest";
                     accsessToken = applicationUser.AcsesToken = new Random().Next(1, 100000);
                     context.SaveChanges();

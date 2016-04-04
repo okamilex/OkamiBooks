@@ -46,7 +46,7 @@
                  }).
                  when('/login', {
                         templateUrl: "/login",
-                        controller: 'searchController'
+                        controller: 'loginController'
                     }).
                     when('/registration', {
                         templateUrl: "/registration",

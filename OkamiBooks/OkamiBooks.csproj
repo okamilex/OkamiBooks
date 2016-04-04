@@ -291,6 +291,7 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\app\controllers\layoutController.js" />
     <Content Include="Scripts\app\controllers\loginController.js" />
     <Content Include="Scripts\app\controllers\peopleController.js" />
     <Content Include="Scripts\app\controllers\readController.js" />
