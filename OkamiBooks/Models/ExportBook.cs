@@ -21,7 +21,15 @@ namespace OkamiBooks.Models
             Name = book.Name;
             Category = book.Category;
             Rating = book.Rating;
-            CommentCount = book.Comments.Count;
+            if (book.Comments != "")
+            {
+                CommentCount = book.GetCommentsList().Count;
+            }
+            else
+            {
+                CommentCount = 0;
+            }
+            
             LastChangeTime = book.LastChangeTime;
         }
     }

@@ -8,7 +8,7 @@ namespace OkamiBooks.Models.Entities
     public class Tags : Entity
     {
         public string Name { get; set; }
-        public List<long> Books { get; set; }
-        
+        public long BookCount { get; set; }
+
     }
 }

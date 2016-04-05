@@ -16,6 +16,7 @@ namespace OkamiBooks.Models.Entities
         public long MaxMedalLiker { get; set; }
         public long MaxMedalReader { get; set; }
         public long MaxBook { get; set; }
+        public long MaxChapter { get; set; }
         public long MaxComment { get; set; }
         public long MaxLike { get; set; }
         public long MaxUserBookInfo{ get; set; }

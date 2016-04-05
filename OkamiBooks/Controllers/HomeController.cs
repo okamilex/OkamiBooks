@@ -27,7 +27,7 @@ namespace OkamiBooks.Controllers
                 {
                     context.Categories.Add(new Category { Name = "Sci-fi" });
                     context.Categories.Add(new Category { Name = "FaryTail" });
-                    context.IdSaviors.Add(new IdSavior { MaxGuest = 1, MaxBook = 1, MaxComment = 1, MaxLike = 1, MaxMedalCommentator = 1, MaxMedalCritic = 1, MaxMedalLiker = 1, MaxMedalReader = 1, MaxMedalWriter = 1, MaxServiceRibbon = 1, MaxUserBookInfo = 1 });
+                    context.IdSaviors.Add(new IdSavior { MaxChapter = 1, MaxGuest = 1, MaxBook = 1, MaxComment = 1, MaxLike = 1, MaxMedalCommentator = 1, MaxMedalCritic = 1, MaxMedalLiker = 1, MaxMedalReader = 1, MaxMedalWriter = 1, MaxServiceRibbon = 1, MaxUserBookInfo = 1 });
 
                 }
 
@@ -129,21 +129,21 @@ namespace OkamiBooks.Controllers
         public JsonResult GetTags()
         {
             var tags = new List<ExportTags>();
-            int maxSize = 0;
+            long maxSize = 0;
             using (var context = new DatabaseContext())
             {
                 context.Tags.ToList().ForEach(x =>
                 {
-                    if (x.Books?.Count > maxSize)
+                    if (x.BookCount > maxSize)
                     {
-                        maxSize = x.Books.Count;
+                        maxSize = x.BookCount;
                     }
                 });
                 context.Tags.ToList().ForEach(x =>
                 {
-                    if (x.Books?.Count > 0)
+                    if (x.BookCount > 0)
                     {
-                        tags.Add(new ExportTags {Word = x.Name, Size = x.Books.Count/maxSize});
+                        tags.Add(new ExportTags {Word = x.Name, Size = (int)(x.BookCount/maxSize*10)});
                     }
                 });
             }

@@ -10,14 +10,12 @@
     <div ng-repeat="book in latestBooks" class="panel panel-default">
         <div class="panel-heading">
             {{book.Name}}
-
-            <a href="#/edit" type="button" class="btn btn-link btn-mini pull-right">Edit</a>
-
-            <a href="#/read" type="button" class="btn btn-link btn-mini pull-right">Read</a>
+            <a href="#/read" type="button" class="btn btn-link btn-mini pull-right"><span class="glyphicon glyphicon-book" aria-hidden="true"></span></a>
         </div>
         <div class="panel-footer">
-            ssagsg
-            <a href="#/comments" type="button" class="btn btn-link btn-mini pull-right">Comments <span class="badge">{{book.Id}}</span></a>
+            {{book.Category}}
+
+            <button type="button" class="btn btn-link btn-mini pull-right"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> <span class="badge">{{book.CommentCount}}</span></button>
         </div>
     </div>
 </div>
@@ -30,16 +28,12 @@
     <div ng-repeat="book in bestBooks" class="panel panel-default">
         <div class="panel-heading">
             {{book.Name}}
-
-
-           
-
-            <a href="#/read" type="button"   class="btn btn-link btn-mini pull-right"><span class="glyphicon glyphicon-book"  aria-hidden="true"></span></a>
+              <a href="#/read" type="button" class="btn btn-link btn-mini pull-right"><span class="glyphicon glyphicon-book" aria-hidden="true"></span></a>
         </div>
         <div class="panel-footer">
-            dsgdsg
-            
-            <button type="button"  class="btn btn-link btn-mini pull-right"><span class="glyphicon glyphicon-comment"  aria-hidden="true"></span> <span class="badge">{{book.Id}}</span></button>
+            {{book.Category}}
+
+            <button type="button" class="btn btn-link btn-mini pull-right"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> <span class="badge">{{book.CommentCount}}</span></button>
         </div>
     </div>
 

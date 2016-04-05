@@ -35,7 +35,7 @@
         });
         
 
-        if (($cookies.get('userName') == undefined) || ($cookies.get('userName') === 'guest3')) {
+        if (($cookies.get('userName') == undefined) || ($cookies.get('userName') === 'alexg1196@mail.ru')) {
             debugger;
             $http.post(
                 'Home/UserGetting', {

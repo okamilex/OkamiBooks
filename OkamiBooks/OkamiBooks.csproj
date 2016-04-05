@@ -209,7 +209,6 @@
     <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\ReadController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
-    <Compile Include="Controllers\RoleAdminController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -232,10 +231,10 @@
     <Compile Include="Models\Entities\Medals\MedalLiker.cs" />
     <Compile Include="Models\Entities\Medals\MedalReader.cs" />
     <Compile Include="Models\Entities\Medals\MedalWriter.cs" />
-    <Compile Include="Models\Entities\MyUser.cs" />
     <Compile Include="Models\Entities\Medals\ServiceRibbon.cs" />
     <Compile Include="Models\Entities\Tags.cs" />
     <Compile Include="Models\ExportBook.cs" />
+    <Compile Include="Models\ExportChapter.cs" />
     <Compile Include="Models\ExportTags.cs" />
     <Compile Include="Models\ExportUser.cs" />
     <Compile Include="Models\IdentityModels.cs" />

@@ -13,7 +13,7 @@ namespace OkamiBooks.Models
     public class DatabaseContext: DbContext
     {
         public DatabaseContext()
-            : base("DefaultConnection2")
+            : base("DefaultConnection6")
         {
             
         }

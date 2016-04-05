@@ -16,7 +16,7 @@
     <tbody>
     <tr>
         <td ng-if="user.Medal1">
-            saf
+            He can write comments =)
         </td>
 
     </tr>
@@ -26,20 +26,26 @@
         </td>
 
     </tr>
+    <tr>
+        <td ng-if="user.Medal3">
+            saf
+        </td>
+
+    </tr>
+    <tr>
+        <td ng-if="user.Medal4">
+            saf
+        </td>
+
+    </tr>
         <tr>
-            <td ng-if="user.Medal3">
-                saf
+            <td ng-if="user.Medal5">
+                He can write
             </td>
 
         </tr>
     </tbody>
 </table>
-
-
-
-
-
-
 <div class="list-group col-lg-12">
     <a class="list-group-item active">
         <h4 class="list-group-item-heading">
@@ -53,7 +59,7 @@
             <a href="#/read" type="button" class="btn btn-link btn-mini pull-right"><span class="glyphicon glyphicon-book" aria-hidden="true"></span></a>
         </div>
         <div class="panel-footer">
-            dsgdsg
+            {{book.Category}}
 
             <button type="button" class="btn btn-link btn-mini pull-right"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> <span class="badge">{{book.CommentCount}}</span></button>
         </div>

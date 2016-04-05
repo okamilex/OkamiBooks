@@ -8,7 +8,7 @@
         
         $http.post('/User/GetBooks', myData).
                      success(function (data) {
-                         $scope.books = angular.fromJson(data);
+                         $scope.books = data;
                      }).
                      error(function () {
                          $location.url('/409');
@@ -76,7 +76,10 @@
                     data
                 ).
                 success(function (data) {
-                    $location.url('/edit');
+                    if (angular.fromJson(data)) {
+                        $location.url('/edit');
+                    }
+                    
                 }).
                 error(function () {
                     $location.url('/409');

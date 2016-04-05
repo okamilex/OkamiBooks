@@ -9,7 +9,6 @@ namespace OkamiBooks.Models.Entities
     {
 
         public string ApplicationUser { get; set; }
-        public long User { get; set; }
         public long Comment { get; set; }
     }
 }

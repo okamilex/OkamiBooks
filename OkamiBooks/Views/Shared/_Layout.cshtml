@@ -7,54 +7,27 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
-    <link rel="stylesheet" ng-controller="layoutControler" ng-href="~/Content/bootstrap2.css"
-          ng-if="theme === 'b'">
-    <link rel="stylesheet" ng-controller="layoutControler" ng-href="~/Content/bootstrap3.css"
-          ng-if="theme === 'l'">
+    
     <link rel="stylesheet"  ng-href="~/Content/bootstrap3.css">
     
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Okami Books", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    
-                    
-                    <li><a ng-href="#/people">People</a></li>
-                    <li><a ng-href="#/search">Search</a></li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>
+   
     <div class="container body-content">
         @RenderBody()
         
         <footer class="navbar-fixed-bottom panel-info panel-footer">
             <div class="container">
                 <span class="col-lg-6">
-                    <span><a ng-href="#/main" class="pull-left">Okami Books</a></span>
+                    <span>@Html.ActionLink("Okami Books", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+</span>
                     <a ng-href="#/people" class="pull-left btn btn-link"> <span class="glyphicon glyphicon-user" style="margin-right: 5px" aria-hidden="true"></span></a>
                     <a ng-href="#/search" class="pull-left btn btn-link"> <span class="glyphicon glyphicon-search" style="margin-right: 5px" aria-hidden="true"></span></a>
                     <a ng-href="#/login" class="pull-left btn btn-link"> <span class="glyphicon glyphicon-flash" style="margin-right: 5px" aria-hidden="true"></span></a>
                 
                 </span>
 
-                <span class="col-lg-6">
-                    <button ng-click="changeTheme()" type="button" ng-controller="layoutControler" class="pull-right btn btn-link" style="vertical-align: bottom"> <span class="glyphicon glyphicon-eye-open" style="margin-right: 5px" aria-hidden="true"></span></button>
-                    <button ng-click="" class="pull-right btn btn-link" style="vertical-align: bottom"> <span class="glyphicon glyphicon-globe" style="margin-right: 5px" aria-hidden="true"></span></button>
-                    <button ng-click="" class="pull-right btn btn-link" style="vertical-align: bottom"> <span class="glyphicon glyphicon-text-width" style="margin-right: 5px" aria-hidden="true"></span></button>
-                    <button ng-click="" class="pull-right btn btn-link" style="vertical-align: bottom"> <span class="glyphicon glyphicon-text-height" style="margin-right: 5px" aria-hidden="true"></span></button>
-                    </span>
+               
 
 </div>
         </footer>

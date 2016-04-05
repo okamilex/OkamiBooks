@@ -88,8 +88,8 @@ namespace OkamiBooks.Controllers
                                 medal5 = mc.IsReceived;
                             }
                         });
-                        user = new ExportUser { Id = applicationUser.Id, Email = applicationUser.Email, Medal1 = true, Medal2 = medal2, Medal3 = medal3, Medal4 = medal4, Medal5 = medal5 };
-                   
+                        user = new ExportUser { Id = applicationUser.Id, Email = applicationUser.Email, Medal1 = medal1, Medal2 = medal2, Medal3 = medal3, Medal4 = medal4, Medal5 = medal5 };
+               
             }
             return Json(user, JsonRequestBehavior.AllowGet);
         }
@@ -151,11 +151,8 @@ namespace OkamiBooks.Controllers
                         applicationUser = x;
                     }
                 });
-                applicationUser.Books = new List<long>();
-                applicationUser.Comments = new List<long>();
-                applicationUser.Likes = new List<long>();
-                applicationUser.BooksInfo = new List<long>();
-                applicationUser.Books.ForEach(bookId =>
+                
+                applicationUser.GetBooksList().ForEach(bookId =>
                 {
                     context.Books.ForEach(book =>
                     {
@@ -175,7 +172,7 @@ namespace OkamiBooks.Controllers
 
             using (var context = new DatabaseContext())
             {
-                MyUser user = new MyUser();
+                
                 context.ApplicationUsers.ForEach(x =>
                 {
                     if (x.UserName == userName)
@@ -200,7 +197,7 @@ namespace OkamiBooks.Controllers
                 {
                     if (x.UserName == userName)
                     {
-                        if (x.AcsesToken == accsessToken)
+                        if ((x.AcsesToken == accsessToken) || (x.AcsesToken == 0))
                         {
                             if (x.UserNameToGet == userName) 
                             {
@@ -230,11 +227,16 @@ namespace OkamiBooks.Controllers
                 if (allOk)
                 {
                     long id = context.IdSaviors.ToList()[0].MaxBook++;
-                    context.Books.Add(new Book { Id = id });
-                    applicationUser.Books.Add(id);
+                    context.Books.Add(new Book { Id = id, ApplicationUser = applicationUser.UserName, LastChangeTime = DateTime.Now, Comments = "", Chapters = "", Tags = ""});
+                    if (applicationUser.Books == null)
+                    {
+                        applicationUser.Books = "";
+                    }
+                    applicationUser.BooksAdd((id));
                     applicationUser.BookId = id;
                 }
-                
+                context.SaveChanges();
+
             }
             bool success = allOk;
             return Json(success, JsonRequestBehavior.AllowGet);
