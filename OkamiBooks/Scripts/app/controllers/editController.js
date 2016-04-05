@@ -24,11 +24,29 @@
             error(function () {
                 $location.url('/409');
             });
+        $http.post('/Edit/GetName', myData).
+            success(function (data) {
+
+                $scope.name = data;
+
+                
+            }).
+            error(function () {
+                $location.url('/409');
+            });
+        $http.post('/Edit/GetCategory', myData).
+            success(function (data) {
+
+                $scope.bookCategory = data;
+
+
+            }).
+            error(function () {
+                $location.url('/409');
+            });
         $scope.newChapterMy = '';
         $scope.text = '';
-        $scope.name = '';
         $scope.chapterNum = '';
-        $scope.bookCategory = '';
         $scope.addChapter = function () {
             if ($scope.newChapterMy !== '') {
                 $http.post(

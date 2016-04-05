@@ -166,20 +166,18 @@ namespace OkamiBooks.Controllers
             return Json(books, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public JsonResult PostForBook(long selectedId, string userName)
+        public JsonResult SetBook(string userName, long accsessToken, long bookId)
         {
-
-
             using (var context = new DatabaseContext())
             {
-                
                 context.ApplicationUsers.ForEach(x =>
                 {
                     if (x.UserName == userName)
                     {
-                        x.BookId = selectedId;
+                        x.BookId = bookId;
                     }
                 });
+                context.SaveChanges();
             }
             return Json(null, JsonRequestBehavior.AllowGet);
         }

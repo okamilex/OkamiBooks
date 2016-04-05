@@ -87,6 +87,62 @@
             
         }
 
+        $scope.startEditBook = function (bookId) {
+            var data = {
+                'userName': $cookies.get('userName'),
+                'accsessToken': $cookies.get('accsessToken'),
+                'bookId': bookId
+            };
+            $http.post(
+                    '/User/SetBook',
+                    data
+                ).
+                success(function (data) {
+                        $location.url('/edit');
+                }).
+                error(function () {
+                    $location.url('/409');
+                });
+
+        }
+
+        $scope.startReadBook = function (bookId) {
+            var data = {
+                'userName': $cookies.get('userName'),
+                'accsessToken': $cookies.get('accsessToken'),
+                'bookId': bookId
+            };
+            $http.post(
+                    '/User/SetBook',
+                    data
+                ).
+                success(function (data) {
+                    $location.url('/read');
+                }).
+                error(function () {
+                    $location.url('/409');
+                });
+
+        }
+        $scope.startCommentBook = function (bookId) {
+            var data = {
+                'userName': $cookies.get('userName'),
+                'accsessToken': $cookies.get('accsessToken'),
+                'bookId': bookId
+            };
+            $http.post(
+                    '/User/SetBook',
+                    data
+                ).
+                success(function (data) {
+                    $location.url('/comments');
+                }).
+                error(function () {
+                    $location.url('/409');
+                });
+
+        }
+
 
         
     }

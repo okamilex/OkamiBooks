@@ -16,7 +16,6 @@ namespace OkamiBooks.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public JsonResult GetChap(string userName, long accsessToken)
         {
@@ -53,7 +52,6 @@ namespace OkamiBooks.Controllers
             }
             return Json(chapters, JsonRequestBehavior.AllowGet);
         }
-
         [HttpPost]
         public JsonResult AddChapter(string userName, long accsessToken, string chapterName)
         {
@@ -103,7 +101,6 @@ namespace OkamiBooks.Controllers
             }
             return Json(chapters, JsonRequestBehavior.AllowGet);
         }
-
         [HttpPost]
         public JsonResult PostName(string userName, long accsessToken, string bookName)
         {
@@ -130,7 +127,60 @@ namespace OkamiBooks.Controllers
             }
             return Json(null, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public JsonResult GetName(string userName, long accsessToken)
+        {
+            long bookId = 0;
+            string bookName = "";
+            using (var context = new DatabaseContext())
+            {
+                context.SaveChanges();
+                context.ApplicationUsers.ForEach(x =>
+                {
+                    if (x.UserName == userName)
+                    {
+                        bookId = x.BookId;
 
+                    }
+                });
+                context.Books.ForEach(x =>
+                {
+                    if (x.Id == bookId)
+                    {
+                        bookName = x.Name;
+                    }
+                });
+                context.SaveChanges();
+            }
+            return Json(bookName, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult GetCategory(string userName, long accsessToken)
+        {
+            string bookCategory = "";
+            long bookId = 0;
+            using (var context = new DatabaseContext())
+            {
+                context.SaveChanges();
+                context.ApplicationUsers.ForEach(x =>
+                {
+                    if (x.UserName == userName)
+                    {
+                        bookId = x.BookId;
+
+                    }
+                });
+                context.Books.ForEach(x =>
+                {
+                    if (x.Id == bookId)
+                    {
+                         bookCategory = x.Category;
+                    }
+                });
+                context.SaveChanges();
+            }
+            return Json(bookCategory, JsonRequestBehavior.AllowGet);
+        }
         [HttpPost]
         public JsonResult PostCategory(string userName, long accsessToken, string bookCategory)
         {
@@ -157,7 +207,6 @@ namespace OkamiBooks.Controllers
             }
             return Json(null, JsonRequestBehavior.AllowGet);
         }
-
         [HttpPost]
         public JsonResult PostText(string userName, long accsessToken, long chapterId, string text)
         {
