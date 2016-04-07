@@ -235,6 +235,7 @@
     <Compile Include="Models\Entities\Tags.cs" />
     <Compile Include="Models\ExportBook.cs" />
     <Compile Include="Models\ExportChapter.cs" />
+    <Compile Include="Models\ExportComment.cs" />
     <Compile Include="Models\ExportTags.cs" />
     <Compile Include="Models\ExportUser.cs" />
     <Compile Include="Models\IdentityModels.cs" />
